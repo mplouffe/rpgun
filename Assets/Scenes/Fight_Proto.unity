@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1627378949}
-  target_offset: {x: 0, y: 0, z: 0}
+  target_offset: {x: 0, y: 0, z: -10}
   camera_speed: 5
   level_bottom: -20
   level_left: -20
@@ -1011,11 +1011,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4024761065458598, guid: 488fef3a70db04a7d975594f7ab7ce56, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.96
+      value: -5.58
       objectReference: {fileID: 0}
     - target: {fileID: 4024761065458598, guid: 488fef3a70db04a7d975594f7ab7ce56, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.01
+      value: -1.9
       objectReference: {fileID: 0}
     - target: {fileID: 4024761065458598, guid: 488fef3a70db04a7d975594f7ab7ce56, type: 3}
       propertyPath: m_LocalPosition.z
