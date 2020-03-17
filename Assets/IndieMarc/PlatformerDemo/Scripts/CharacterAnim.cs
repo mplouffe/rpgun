@@ -5,7 +5,6 @@ using UnityEngine;
 namespace IndieMarc.Platformer
 {
     [RequireComponent(typeof(PlayerCharacter))]
-    [RequireComponent(typeof(Animator))]
     public class CharacterAnim : MonoBehaviour
     {
         private PlayerCharacter character;
@@ -16,7 +15,7 @@ namespace IndieMarc.Platformer
         {
             character = GetComponent<PlayerCharacter>();
             character_item = GetComponent<CharacterHoldItem>();
-            animator = GetComponent<Animator>();
+            animator = GetComponentInChildren<Animator>();
 
             character.onJump += OnJump;
             character.onCrouch += OnCrouch;
