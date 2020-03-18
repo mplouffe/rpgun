@@ -64,6 +64,8 @@ namespace IndieMarc.Platformer
         private Vector3 last_ground_pos;
         private Vector3 average_ground_pos;
 
+        private GunRotation gunRotation;
+
         private Vector2 move;
         private Vector2 move_input;
         private bool jump_press;
@@ -100,6 +102,8 @@ namespace IndieMarc.Platformer
             contact_filter.layerMask = ground_layer;
             contact_filter.useLayerMask = true;
             contact_filter.useTriggers = false;
+
+            gunRotation = GetComponentInChildren<GunRotation>();
 
         }
 
@@ -162,11 +166,8 @@ namespace IndieMarc.Platformer
 
         private void UpdateFacing()
         {
-            if (Mathf.Abs(move.x) > 0.01f)
-            {
-                float side = (move.x < 0f) ? -1f : 1f;
-                transform.localScale = new Vector3(start_scale.x * side, start_scale.y, start_scale.z);
-            }
+            float side = !gunRotation.GetFacingRight() ? -1f : 1f;
+            transform.localScale = new Vector3(start_scale.x * side, start_scale.y, start_scale.z);
         }
 
         private void UpdateJump()
