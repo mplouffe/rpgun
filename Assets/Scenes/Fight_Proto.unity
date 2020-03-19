@@ -1033,6 +1033,7 @@ MonoBehaviour:
   up_key: 273
   down_key: 274
   jump_key: 32
+  shoot_key: 118
   action_key: 99
 --- !u!4 &1184164141
 Transform:
@@ -1048,6 +1049,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1949661567 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2495389472368598074, guid: 4ded163919d476c4198675a72c652432,
+    type: 3}
+  m_PrefabInstance: {fileID: 2495389473595539692}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2062090237
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,6 +1113,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1392584128454212456, guid: 4ded163919d476c4198675a72c652432,
+        type: 3}
+      propertyPath: gunArms
+      value: 
+      objectReference: {fileID: 1949661567}
     - target: {fileID: 2496431919275565338, guid: 4ded163919d476c4198675a72c652432,
         type: 3}
       propertyPath: m_Name
