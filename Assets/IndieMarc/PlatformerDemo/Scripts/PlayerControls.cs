@@ -18,6 +18,7 @@ namespace IndieMarc.Platformer
         public KeyCode up_key;
         public KeyCode down_key;
         public KeyCode jump_key;
+        public KeyCode shoot_key;
         public KeyCode action_key;
 
         private Vector2 move = Vector2.zero;
@@ -25,6 +26,8 @@ namespace IndieMarc.Platformer
         private bool jump_hold = false;
         private bool action_press = false;
         private bool action_hold = false;
+        private bool shoot_press = false;
+        private bool shoot_hold = false;
 
         private static Dictionary<int, PlayerControls> controls = new Dictionary<int, PlayerControls>();
 
@@ -46,6 +49,8 @@ namespace IndieMarc.Platformer
             jump_press = false;
             action_hold = false;
             action_press = false;
+            shoot_hold = false;
+            shoot_press = false;
 
             if (Input.GetKey(left_key))
                 move += -Vector2.right;
@@ -63,6 +68,10 @@ namespace IndieMarc.Platformer
                 action_hold = true;
             if (Input.GetKeyDown(action_key))
                 action_press = true;
+            if (Input.GetKey(shoot_key))
+                shoot_hold = true;
+            if (Input.GetKeyDown(shoot_key))
+                shoot_press = true;
 
             float move_length = Mathf.Min(move.magnitude, 1f);
             move = move.normalized * move_length;
@@ -93,6 +102,16 @@ namespace IndieMarc.Platformer
         public bool GetActionHold()
         {
             return action_hold;
+        }
+
+        public bool GetShootDown()
+        {
+            return shoot_press;
+        }
+
+        public bool GetShootHold()
+        {
+            return shoot_hold;
         }
 
         //-----------

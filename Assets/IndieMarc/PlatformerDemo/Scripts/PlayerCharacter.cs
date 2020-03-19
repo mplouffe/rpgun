@@ -65,11 +65,14 @@ namespace IndieMarc.Platformer
         private Vector3 average_ground_pos;
 
         private GunRotation gunRotation;
+        private Gun gun;
 
         private Vector2 move;
         private Vector2 move_input;
         private bool jump_press;
         private bool jump_hold;
+        private bool shoot_press;
+        private bool shoot_hold;
 
         private float hp;
         private bool is_dead = false;
@@ -104,6 +107,7 @@ namespace IndieMarc.Platformer
             contact_filter.useTriggers = false;
 
             gunRotation = GetComponentInChildren<GunRotation>();
+            gun = GetComponentInChildren<Gun>();
 
         }
 
@@ -151,6 +155,13 @@ namespace IndieMarc.Platformer
             move_input = !disable_controls ? controls.GetMove() : Vector2.zero;
             jump_press = !disable_controls ? controls.GetJumpDown() : false;
             jump_hold = !disable_controls ? controls.GetJumpHold() : false;
+
+            shoot_press = !disable_controls ? controls.GetShootDown() : false;
+
+            if (shoot_press)
+            {
+                Shoot();
+            }
 
             if (jump_press || move_input.y > 0.5f)
                 Jump();
@@ -266,6 +277,11 @@ namespace IndieMarc.Platformer
                         onJump.Invoke();
                 }
             }
+        }
+
+        public void Shoot()
+        {
+            gun.Shoot();
         }
 
         private bool DetectGrounded(bool detect_ceiled)
