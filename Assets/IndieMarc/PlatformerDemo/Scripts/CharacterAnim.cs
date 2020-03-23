@@ -23,7 +23,6 @@ namespace IndieMarc.Platformer
 
         void Update()
         {
-
             //Anims
             animator.SetBool("Jumping", character.IsJumping());
             animator.SetBool("InAir", !character.IsGrounded());
