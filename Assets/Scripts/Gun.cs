@@ -14,6 +14,7 @@ public class Gun : MonoBehaviour
     public float reloadTime;
 
     public GameObject gunArms;
+    public GunRotation gunRotation;
 
     private List<Projectile> projectiles;
     private float offCooldown;
@@ -32,10 +33,25 @@ public class Gun : MonoBehaviour
 
     private void FireGun()
     {
-        GameObject firedBullet = Instantiate(bullet, bulletSpawn.position, gunArms.transform.rotation) as GameObject;
+        GameObject firedBullet;
+
+        if (gunRotation.GetFacingRight())
+        {
+            firedBullet = Instantiate(bullet, bulletSpawn.position, gunArms.transform.rotation) as GameObject;
+        } else {
+            Vector3 originalTransform = gunArms.transform.rotation.eulerAngles;
+
+            firedBullet = Instantiate(
+                bullet,
+                bulletSpawn.position,
+                Quaternion.Euler(originalTransform.x, originalTransform.y, 180 + originalTransform.z)
+            ) as GameObject;
+        }
+
         Projectile firedProjectile = firedBullet.GetComponent<Projectile>();
         firedProjectile.Fire();
         offCooldown = Time.time + coolDown;
+
     }
 
     private void TriggerClick()

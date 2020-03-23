@@ -20,7 +20,6 @@ public class Projectile : MonoBehaviour
     /// <param name="other">The Collision2D data associated with this collision.</param>
     void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("Sanity check");
         Destroy(this.gameObject);
     }
 }

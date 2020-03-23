@@ -1252,6 +1252,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2495389473595539692}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1949661569 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2495389472368598068, guid: 4ded163919d476c4198675a72c652432,
+    type: 3}
+  m_PrefabInstance: {fileID: 2495389473595539692}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949661567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 581d85cf32beeb043b2d08569830bd22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2062090237
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,6 +1327,11 @@ PrefabInstance:
       propertyPath: gunArms
       value: 
       objectReference: {fileID: 1949661567}
+    - target: {fileID: 1392584128454212456, guid: 4ded163919d476c4198675a72c652432,
+        type: 3}
+      propertyPath: gunRotation
+      value: 
+      objectReference: {fileID: 1949661569}
     - target: {fileID: 2496431919275565338, guid: 4ded163919d476c4198675a72c652432,
         type: 3}
       propertyPath: m_Name
