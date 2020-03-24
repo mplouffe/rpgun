@@ -17,15 +17,14 @@ public class PlayerMovement : MonoBehaviour
     float boostCooldownInterval;
     float boostDurationInterval;
 
-    // Start is called before the first frame update
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
+        // Boosting
         if (!boostFired && Input.GetButtonDown("Fire1"))
         {
-            Debug.Log("Firing Boost");
             boostFired = true;
             boosting = true;
             boostCooldownInterval = Time.time + boostCooldown;
@@ -41,6 +40,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public Vector2 GetPlayerInput()
+    {
+        return movement;
+    }
+
     void FixedUpdate()
     {
         if (boosting)
@@ -51,6 +55,5 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
         }
-
     }
 }
