@@ -18,12 +18,15 @@ public class OverheadCharacterAnimator : MonoBehaviour
     private DirectionFacing currentDirection;
     private Vector3 startScale;
 
+    private bool isAnimating;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
         currentDirection = DirectionFacing.DOWN;
         startScale = transform.localScale;
+        isAnimating = true;
     }
 
     /// <summary>
@@ -31,37 +34,48 @@ public class OverheadCharacterAnimator : MonoBehaviour
     /// </summary>
     void Update()
     {
-        Vector2 input = playerMovement.GetPlayerInput();
+        if (isAnimating) {
+            Vector2 input = playerMovement.GetPlayerInput();
 
-        if (input.magnitude == 0)
-        {
-            return;            
-        }
+            if (input.magnitude == 0)
+            {
+                return;            
+            }
 
-        if (input.x * input.x > input.y * input.y)
-        {
-            if (input.x < 0 && currentDirection != DirectionFacing.LEFT)
+            if (input.x * input.x > input.y * input.y)
             {
-                ChangeDirection(DirectionFacing.LEFT);
+                if (input.x < 0 && currentDirection != DirectionFacing.LEFT)
+                {
+                    ChangeDirection(DirectionFacing.LEFT);
+                }
+                else if (input.x > 0 && currentDirection != DirectionFacing.RIGHT)
+                {
+                    ChangeDirection(DirectionFacing.RIGHT);
+                }
             }
-            else if (input.x > 0 && currentDirection != DirectionFacing.RIGHT)
+            else
             {
-                ChangeDirection(DirectionFacing.RIGHT);
-            }
-        }
-        else
-        {
-            if (input.y < 0 && currentDirection != DirectionFacing.DOWN)
-            {
-                ChangeDirection(DirectionFacing.DOWN);
-            }
-            else if (input.y > 0 && currentDirection != DirectionFacing.UP)
-            {
-                ChangeDirection(DirectionFacing.UP);
+                if (input.y < 0 && currentDirection != DirectionFacing.DOWN)
+                {
+                    ChangeDirection(DirectionFacing.DOWN);
+                }
+                else if (input.y > 0 && currentDirection != DirectionFacing.UP)
+                {
+                    ChangeDirection(DirectionFacing.UP);
+                }
             }
         }
     }
 
+    public void StopAnimating()
+    {
+        isAnimating = false;
+    }
+
+    public void StartAnimating()
+    {
+        isAnimating = true;
+    }
 
     public void ChangeDirection(DirectionFacing newDirection)
     {

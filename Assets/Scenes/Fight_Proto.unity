@@ -1093,6 +1093,36 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &734773279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 734773280}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: PlayerSpawnPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &734773280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734773279}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.04, y: 2.6315093, z: -3.9809346}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &811351064
 GameObject:
   m_ObjectHideFlags: 0
@@ -2474,24 +2504,6 @@ Transform:
   m_Father: {fileID: 1060957083}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1949661567 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2495389472368598074, guid: 4ded163919d476c4198675a72c652432,
-    type: 3}
-  m_PrefabInstance: {fileID: 2495389473595539692}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1949661569 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2495389472368598068, guid: 4ded163919d476c4198675a72c652432,
-    type: 3}
-  m_PrefabInstance: {fileID: 2495389473595539692}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1949661567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 581d85cf32beeb043b2d08569830bd22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &2020995721
 Mesh:
   m_ObjectHideFlags: 0
@@ -2876,16 +2888,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1392584128454212456, guid: 4ded163919d476c4198675a72c652432,
-        type: 3}
-      propertyPath: gunArms
-      value: 
-      objectReference: {fileID: 1949661567}
-    - target: {fileID: 1392584128454212456, guid: 4ded163919d476c4198675a72c652432,
-        type: 3}
-      propertyPath: gunRotation
-      value: 
-      objectReference: {fileID: 1949661569}
     - target: {fileID: 2496431919275565338, guid: 4ded163919d476c4198675a72c652432,
         type: 3}
       propertyPath: m_Name

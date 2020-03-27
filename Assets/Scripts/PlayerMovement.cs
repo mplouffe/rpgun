@@ -17,27 +17,49 @@ public class PlayerMovement : MonoBehaviour
     float boostCooldownInterval;
     float boostDurationInterval;
 
+    private bool canMove;
+
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    void Awake()
+    {
+        canMove = true;    
+    }
+
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        if (canMove) {
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
 
-        // Boosting
-        if (!boostFired && Input.GetButtonDown("Fire1"))
-        {
-            boostFired = true;
-            boosting = true;
-            boostCooldownInterval = Time.time + boostCooldown;
-            boostDurationInterval = Time.time + boostDuration;
+            // Boosting
+            if (!boostFired && Input.GetButtonDown("Fire1"))
+            {
+                boostFired = true;
+                boosting = true;
+                boostCooldownInterval = Time.time + boostCooldown;
+                boostDurationInterval = Time.time + boostDuration;
+            }
+            else if (boosting && Time.time > boostDurationInterval)
+            {
+                boosting = false;
+            }
+            else if (boostFired && Time.time > boostCooldownInterval)
+            {
+                boostFired = false;
+            }
         }
-        else if (boosting && Time.time > boostDurationInterval)
-        {
-            boosting = false;
-        }
-        else if (boostFired && Time.time > boostCooldownInterval)
-        {
-            boostFired = false;
-        }
+    }
+
+    public void StopMovement()
+    {
+        canMove = false;
+    }
+
+    public void StartMovement()
+    {
+        canMove = true;
     }
 
     public Vector2 GetPlayerInput()
@@ -54,6 +76,21 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        }
+    }
+
+    /// <summary>
+    /// Sent when an incoming collider makes contact with this object's
+    /// collider (2D physics only).
+    /// </summary>
+    /// <param name="other">The Collision2D data associated with this collision.</param>
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        Debug.Log ("Sanity Check");
+        if (other.gameObject.tag == "OverworldEnemy")
+        {
+            RPGun_GameManager manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<RPGun_GameManager>();
+            manager.TriggerFight(other.gameObject.GetComponent<RPGun_Enemy>());
         }
     }
 }
