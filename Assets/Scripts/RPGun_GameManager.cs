@@ -22,7 +22,11 @@ public class RPGun_GameManager : MonoBehaviour
     public GameObject overWorldPlayerPrefab;
     public GameObject fightPlayerPrefab;
 
+    public GameObject fightEnemyPrefab;
+
     public List<Transform> playerSpawnPoints;
+
+    private RPGun_FightStage stage;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -31,6 +35,9 @@ public class RPGun_GameManager : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         currentState = GameState.OVERWORLD;
+        stage = new RPGun_FightStage();
+        stage.enemiesToSpawn = new List<GameObject>();
+        stage.enemiesToSpawn.Add(fightEnemyPrefab);
     }
 
     // called first
@@ -80,6 +87,8 @@ public class RPGun_GameManager : MonoBehaviour
                 GameObject playerGameObject = GameObject.Instantiate(fightPlayerPrefab, playerSpawnPoints[0]);
                 FollowCamera.Get().LockCameraOn(playerGameObject);
             }
+
+
         }
     }
 
@@ -109,5 +118,10 @@ public class RPGun_GameManager : MonoBehaviour
     public void StartPlayerMovement()
     {
         player.StartMovement();
+    }
+
+    public RPGun_FightStage GetStage()
+    {
+        return stage;
     }
 }

@@ -2695,6 +2695,8 @@ MonoBehaviour:
     type: 3}
   fightPlayerPrefab: {fileID: 2496431919275565338, guid: 4ded163919d476c4198675a72c652432,
     type: 3}
+  fightEnemyPrefab: {fileID: 3903580136741277987, guid: 8977a7bb60ac342deb428fac497bf96a,
+    type: 3}
   playerSpawnPoints: []
 --- !u!4 &1984705864
 Transform:
