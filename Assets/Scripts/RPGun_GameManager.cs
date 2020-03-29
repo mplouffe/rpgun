@@ -28,12 +28,24 @@ public class RPGun_GameManager : MonoBehaviour
 
     private RPGun_FightStage stage;
 
+    private static RPGun_GameManager Instance;
+
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
     void Awake()
     {
         DontDestroyOnLoad(this);
+
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         currentState = GameState.OVERWORLD;
         stage = new RPGun_FightStage();
         stage.enemiesToSpawn = new List<GameObject>();
@@ -66,6 +78,7 @@ public class RPGun_GameManager : MonoBehaviour
     {
         StopPlayerMovement();
         SceneManager.LoadScene(0);
+        player = null;
         currentState = GameState.OVERWORLD;
     }
 
@@ -112,7 +125,9 @@ public class RPGun_GameManager : MonoBehaviour
 
     public void StopPlayerMovement()
     {
-        player.StopMovement();
+        if (player != null) {
+            player.StopMovement();
+        }
     }
 
     public void StartPlayerMovement()

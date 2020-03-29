@@ -13,6 +13,7 @@ public class RPGun_FightManager : MonoBehaviour
 
     void Awake()
     {
+        enemies = new Dictionary<Guid, RPGun_Enemy>();
         manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<RPGun_GameManager>();
         stage = manager.GetStage();
         var enemySpawnPointObjects = GameObject.FindGameObjectsWithTag("EnemySpawnPoint");
@@ -24,7 +25,10 @@ public class RPGun_FightManager : MonoBehaviour
 
         foreach (GameObject enemy in stage.enemiesToSpawn)
         {
-            GameObject.Instantiate(enemy, enemySpawnPoints[0].position, enemySpawnPoints[0].rotation);
+            GameObject newObject = GameObject.Instantiate(enemy, enemySpawnPoints[0].position, enemySpawnPoints[0].rotation);
+            RPGun_Enemy newEnemy = newObject.GetComponent<RPGun_Enemy>();
+            newEnemy.SetId(AddEnemy(newEnemy));
+            newEnemy.SetFightManager(this);
         }
     }
 
@@ -37,10 +41,21 @@ public class RPGun_FightManager : MonoBehaviour
 
     public void RemoveEnemy(Guid id)
     {
+        Debug.Log("Remove Enemies Called");
         enemies.Remove(id);
+        Debug.Log("count: " + enemies.Count);
         if (enemies.Count == 0)
         {
-            manager.TriggerOverworld();
+            Debug.Log("Calling EndScene...");
+            StartCoroutine(EndScene());
         }
+    }
+
+    public IEnumerator EndScene()
+    {
+        Debug.Log("EndSceneCalled..");
+        yield return new WaitForSeconds(2);
+        Debug.Log("Waited for 2 second...");
+        manager.TriggerOverworld();
     }
 }

@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 3903580136741277991}
   - component: {fileID: 3903580136741277989}
   - component: {fileID: 3903580136741277988}
+  - component: {fileID: 1870454014681463856}
   m_Layer: 0
   m_Name: MVP_Enemy
   m_TagString: Enemy
@@ -218,3 +219,15 @@ MonoBehaviour:
   orderInLayer: 0
   shatterType: 1
   fragments: []
+--- !u!114 &1870454014681463856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3903580136741277987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c8abdfbf3ad4a7ea07d75a038eed3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

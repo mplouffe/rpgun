@@ -34,6 +34,7 @@ public class Projectile : MonoBehaviour
         if (other.gameObject.tag == "Enemy") {
             other.gameObject.GetComponent<Explodable>().explode();
             _force.doExplosion(transform.position);
+            other.gameObject.GetComponent<RPGun_Enemy>().KillEnemy();
         }
         
         Destroy(this.gameObject);
