@@ -9,7 +9,8 @@ public class RPGun_GameManager : MonoBehaviour
     private enum GameState
     {
         FIGHT,
-        OVERWORLD
+        OVERWORLD,
+        MENU
     }
 
     private GameState currentState;
